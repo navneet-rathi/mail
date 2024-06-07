@@ -1,0 +1,14 @@
+- name: sending email play
+  hosts: localhost
+  tasks:
+    - name: Sending an e-mail using Gmail SMTP servers
+      mail:
+        host: smtp.gmail.com
+        port: 587
+        username: "{{ from_mail }}"
+        password: "{{ password }}"
+        to:
+          - "nrathi@redhat.com"
+          - "bdoshi@gmail.com"
+        subject: Ansible Report
+        body: System [[ ansible_hostname ]] has been successfully provisioned.
