@@ -11,4 +11,4 @@
           - "nrathi@redhat.com"
           - "bdoshi@redhat.com"
         subject: Ansible Report
-        body: System [[ ansible_hostname ]] has been successfully provisioned.
+        body: System "{{ ansible_hostname }}" has been successfully provisioned.
