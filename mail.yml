@@ -5,8 +5,8 @@
       mail:
         host: smtp.gmail.com
         port: 587
-        username: "{{ from_mail }}"
-        password: "{{ password }}"
+        username: dmeonavneet@gmail.com
+        password: "rbfqhoincpyouxqk"
         to:
           - "nrathi@redhat.com"
           - "bdoshi@gmail.com"
