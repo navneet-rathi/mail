@@ -1,5 +1,5 @@
 - name: sending email play
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Sending an e-mail using Gmail SMTP servers
       mail:
