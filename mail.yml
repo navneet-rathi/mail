@@ -9,7 +9,5 @@
         password: "rbfqhoincpyouxqk"
         to:
           - "nrathi@redhat.com"
-          - "bdoshi@redhat.com"
-          - "mithun.gangadharaiah@dynatrace.com"
         subject: Ansible Report
         body: System "{{ ansible_hostname }}" has been successfully provisioned.
