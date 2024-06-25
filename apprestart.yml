@@ -1,0 +1,32 @@
+- name: Restart Backend Application Process
+  hosts: all
+  become: yes
+  vars:
+    backend_command: "/easyTravel/easytravel-2.0.0-x64/weblauncher/../CreditCardAuthorizationS64"
+  tasks:
+    - name: Check if the application process is running
+      shell: pgrep -f "{{ backend_command }}"
+      register: process_status
+      ignore_errors: yes
+
+    - name: Stop the application process if running
+      shell: pkill -f "{{ backend_command }}"
+      when: process_status.rc == 0
+
+    - name: Start the application process
+      shell: "nohup {{ backend_command }} &"
+      async: 30
+      poll: 0
+
+    - name: Wait for the application process to start
+      wait_for:
+        timeout: 30
+
+    - name: Verify the application process is running
+      shell: pgrep -f "{{ backend_command }}"
+      register: verify_status
+      
+    - name: Print verification status
+      debug:
+        msg: "Verification status: {{ verify_status.stdout }}"
+      failed_when: verify_status.rc != 0
